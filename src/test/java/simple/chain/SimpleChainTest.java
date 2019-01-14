@@ -10,19 +10,23 @@ import org.junit.Test;
 
 public class SimpleChainTest {
 
+	public Map<String, Object> payload_A = new HashMap<String, Object>();
+	public Map<String, Object> payload_B = new HashMap<String, Object>();
+
+
 	@Test
 	public void testBlockchain() {
 
 		SimpleBlockchain<Transaction_creation> chain1 = new SimpleBlockchain<Transaction_creation>();
 
-		Map<String, Object> payload_A = new HashMap<String, Object>();
 		payload_A.put("name","Name_Test_1");
 		payload_A.put("descr","Descr_Test_1");
 
-		Map<String, Object> payload_B = new HashMap<String, Object>();
+
 		payload_B.put("name","Name_Test_1");
 		payload_B.put("descr","Descr_Test_1");
 		chain1.add(new Transaction_creation("A",payload_A)).add(new Transaction_creation("B",payload_B));
+
 		SimpleBlockchain<Transaction_creation> chain2 = chain1.Clone();
 
 		//chain1.add(new Transaction_creation("D"));
@@ -59,7 +63,7 @@ public class SimpleChainTest {
 		System.out.println(String.format("Chain is Valid: %s", chain1.validate()));
 
 	}
-	/*
+
 
 	@Test
 	public void merkleTreeTest() {
@@ -68,8 +72,7 @@ public class SimpleChainTest {
 
 		SimpleBlockchain<Transaction_creation> chain1 = new SimpleBlockchain<Transaction_creation>();
 
-		chain1.add(new Transaction_creation("A")).add(new Transaction_creation("B")).add(new Transaction_creation("C")).add(new Transaction_creation("D"));
-
+		chain1.add(new Transaction_creation("A",payload_A)).add(new Transaction_creation("B",payload_B));
 		// get a block in chain
 		Block<Transaction_creation> block = chain1.getHead();
 
@@ -102,7 +105,7 @@ public class SimpleChainTest {
 
 		// This represents transactions being created by a network
 		for (int i = 0; i < 30; i++) {
-			miner.mine(new Transaction_creation("" + i));
+			miner.mine(new Transaction_creation("" + i, payload_A));
 		}
 
 		System.out.println("Number of Blocks Mined = " + chain.getChain().size());
@@ -110,13 +113,14 @@ public class SimpleChainTest {
 
 	}
 
+
 	@Test
 	public void testValidateBlockchain() {
 
 		SimpleBlockchain<Transaction_creation> chain = new SimpleBlockchain<Transaction_creation>();
 		// add 30 transaction should result in 3 blocks in chain.
 		for (int i = 0; i < 30 ; i++) {
-	   	       chain.add(new Transaction_creation("tx:"+i));
+	   	       chain.add(new Transaction_creation("tx:"+i,payload_A));
 		}
 		
 		// is chain valid 
@@ -124,13 +128,13 @@ public class SimpleChainTest {
 
         // get second block from chain and add a tx..		
 		Block<Transaction_creation> block = chain.getChain().get(1);
-		Transaction_creation tx = new Transaction_creation("X");
+		Transaction_creation tx = new Transaction_creation("X",payload_A);
 		block.add(tx);
 		
 		// is chain valid, should not be changed a block... 
 		System.out.println(String.format("Chain is Valid: %s", chain.validate()));
 	
 	
-	}*/
+	}
 
 }

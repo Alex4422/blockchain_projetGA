@@ -9,8 +9,5 @@
         <module name="khs-blockchain-java-example" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="khs-blockchain-java-example" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

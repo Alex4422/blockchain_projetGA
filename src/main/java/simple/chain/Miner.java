@@ -1,5 +1,7 @@
 package simple.chain;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
@@ -54,6 +56,13 @@ public class Miner<T extends Tx> {
 
 		Gson parser = new Gson();
 		String serializedData = parser.toJson(transactionPool);
+
+		try(FileWriter file = new FileWriter("jsonfile.txt")){
+			file.write(serializedData);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		;
 		String message = block.getTimeStamp() + block.getIndex() + block.getMerkleRoot() + serializedData
 				+ block.getPreviousHash();
 

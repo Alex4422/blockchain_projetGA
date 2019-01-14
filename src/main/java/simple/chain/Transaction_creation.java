@@ -26,6 +26,7 @@ public class Transaction_creation implements Tx {
     public Transaction_creation(String value, Map<String, Object> payload) {
         this.hash = SHA256.generateHash(value);
         this.setValue(value);
+        this.setPayload(payload);
     }
 
 
