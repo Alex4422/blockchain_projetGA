@@ -9,8 +9,8 @@ public class Transaction_creation implements Tx {
 
     private String hash; //Pub_Key
     private String value;
-    private String type_transaction;
-    private String name;
+   private String type_transaction = "Creation";
+   /*  private String name;
     private String descr;
     private Date begin;
     private Date end;
@@ -19,14 +19,14 @@ public class Transaction_creation implements Tx {
     private String location;
     private Integer min;
     private Integer max;
-    private Map<String, Integer> limits = new HashMap<String, Integer>();
-    private Map<String, Object> payload = new HashMap<String, Object>();
+    private Map<String, Integer> limits = new HashMap<String, Integer>();*/
+    private Map<String, Object> payload ;
 
 
     public Transaction_creation(String value, Map<String, Object> payload) {
         this.hash = SHA256.generateHash(value);
         this.setValue(value);
-        this.setPayload(payload);
+        this.payload = payload;
     }
 
 
@@ -46,18 +46,19 @@ public class Transaction_creation implements Tx {
         this.hash = SHA256.generateHash(value);
         this.value = value;
     }
-    public void setPayload( Map<String, Object>  payload) {
-        this.payload.put("name",this.name);
-        this.payload.put("descr",this.descr);
+    /*public Map<String, Object> setPayload(Map<String, Object>  payload) {
+        payload.put("name",this.name);
+        payload.put("descr",this.descr);
         this.date.put("begin",this.begin);
         this.date.put("end",this.end);
         this.date.put("end_subscription",this.end_subscription);
-        this.payload.put("date",this.date);
-        this.payload.put("location",this.location);
+        payload.put("date",this.date);
+        payload.put("location",this.location);
         this.limits.put("min",this.min);
         this.limits.put("max",this.max);
-        this.payload.put("limits",this.limits);
-    }
+        payload.put("limits",this.limits);
+        return payload;
+    }*/
 
     public String toString() {
         return this.hash + " : "+this.getValue();

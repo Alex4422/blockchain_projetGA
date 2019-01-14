@@ -56,6 +56,7 @@ public class Miner<T extends Tx> {
 
 		Gson parser = new Gson();
 		String serializedData = parser.toJson(transactionPool);
+		System.out.println("========= " + serializedData);
 
 		try(FileWriter file = new FileWriter("jsonfile.txt")){
 			file.write(serializedData);
@@ -65,6 +66,9 @@ public class Miner<T extends Tx> {
 		;
 		String message = block.getTimeStamp() + block.getIndex() + block.getMerkleRoot() + serializedData
 				+ block.getPreviousHash();
+
+		System.out.println("====message===== " + message);
+
 
 		while (!nonceFound) {
 
