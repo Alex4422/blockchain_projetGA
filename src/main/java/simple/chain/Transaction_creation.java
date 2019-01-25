@@ -8,7 +8,7 @@ package simple.chain;
 public class Transaction_creation implements Tx {
 
     private String hash; //Pub_Key
-    private String value;
+    private byte[] value;
    private String type_transaction = "Creation";
    /*  private String name;
     private String descr;
@@ -23,8 +23,8 @@ public class Transaction_creation implements Tx {
     private Map<String, Object> payload ;
 
 
-    public Transaction_creation(String value, Map<String, Object> payload) {
-        this.hash = SHA256.generateHash(value);
+    public Transaction_creation(byte[] value, Map<String, Object> payload) {
+        this.hash = SHA256.generateHash(value.toString());
         this.setValue(value);
         this.payload = payload;
     }
@@ -37,13 +37,13 @@ public class Transaction_creation implements Tx {
     }*/
 
 
-    public String getValue() {
+    public byte[] getValue() {
         return value;
     }
-    public void setValue(String value) {
+    public void setValue(byte[] value) {
 
         // new value need to recalc hash
-        this.hash = SHA256.generateHash(value);
+        this.hash = SHA256.generateHash(value.toString());
         this.value = value;
     }
     /*public Map<String, Object> setPayload(Map<String, Object>  payload) {

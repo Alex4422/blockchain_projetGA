@@ -10,7 +10,7 @@ import java.util.Map;
 import org.junit.Test;
 
 public class SimpleChainTest {
-
+    /*
 	public Map<String, Object> payload_A = new HashMap<String, Object>();
 	public Map<String, Object> payload_B = new HashMap<String, Object>();
 
@@ -42,7 +42,7 @@ public class SimpleChainTest {
 		System.out.println(
 				String.format("Chains Are In Sync: %s", chain1.getHead().getHash().equals(chain2.getHead().getHash())));
 
-		//assertTrue(chain1.blockChainHash().equals(chain2.blockChainHash()));
+		//assertTrue(chain1.blockChainHash().equals(chain2.()));
 
 		System.out.println("Current Chain Head Transactions: ");
 		for (Block block : chain1.chain) {
@@ -149,5 +149,5 @@ public class SimpleChainTest {
 	
 	
 	}
-
+*/
 }

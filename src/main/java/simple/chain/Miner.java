@@ -72,7 +72,7 @@ public class Miner<T extends Tx> {
 
 		while (!nonceFound) {
 
-			nonceHash = SHA256.generateHash(message + nonce);
+			nonceHash = (String) SHA256.generateHash(String.format("%s%d", message, nonce));
 			nonceFound = nonceHash.substring(0, nonceKey.length()).equals(nonceKey);
 			nonce++;
 

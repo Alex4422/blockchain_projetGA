@@ -2,29 +2,28 @@ package simple.chain;
 
 import helpers.SHA256;
 
-import java.util.Date;
 import java.util.List;
 
 public class Transaction_inscription {
     private String hash; //Pub_Key
-    private String value;
+    private byte[] value;
     private List<Object> payload;
 
     public Transaction_inscription(String a) {
-        this.hash = SHA256.generateHash(value);
+        this.hash = SHA256.generateHash(value.toString());
         this.payload.add(this.hash);
         this.setValue(value);
     }
 
     public String hash() { return hash; }
 
-    public String getValue() {
+    public byte[] getValue() {
         return value;
     }
-    public void setValue(String value) {
+    public void setValue(byte[] value) {
 
         // new value need to recalc hash
-        this.hash = SHA256.generateHash(value);
+        this.hash = SHA256.generateHash(value.toString());
         this.value = value;
     }
 
