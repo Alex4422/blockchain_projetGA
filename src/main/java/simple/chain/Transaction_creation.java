@@ -1,9 +1,8 @@
-
 package simple.chain;
 
-        import helpers.SHA256;
+import helpers.SHA256;
 
-        import java.util.*;
+import java.util.*;
 
 public class Transaction_creation implements Tx {
 

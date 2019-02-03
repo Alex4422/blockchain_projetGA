@@ -100,6 +100,8 @@ public class HashTest {
         }
         byte[] HexaFile = readFile("tests/test_crypto/hmac/invalid/hmac_hex");
 
+        System.out.println("hex :" + hex);
+
         assertNotEquals(hex,new String(HexaFile, StandardCharsets.UTF_8));
 
     }
@@ -188,7 +190,8 @@ public class HashTest {
         }
         byte[] HexaFile = readFile("tests/test_crypto/hmac/node/hmac_node_hex");
 
-        assertNotEquals(calculHsommet,new String(HexaFile, StandardCharsets.UTF_8));
+        //assertNotEquals(calculHsommet,new String(HexaFile, StandardCharsets.UTF_8));
+        assertEquals(calculHsommet,new String(HexaFile, StandardCharsets.UTF_8));
     }
 
     @Test
